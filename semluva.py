@@ -1,15 +1,19 @@
 import tweepy
 import time
 
-CONSUMER_KEY = # hidden for obvious reasons
-CONSUMER_SECRET = # hidden for obvious reasons
-ACCESS_KEY = # hidden for obvious reasons
-ACCESS_SECRET = # hidden for obvious reasons
+# KEY importing
+from os import environ
+CONSUMER_KEY = environ['CONSUMER_KEY']
+CONSUMER_SECRET = environ['CONSUMER_SECRET']
+ACCESS_KEY = environ['ACCESS_KEY']
+ACCESS_SECRET = environ['ACCESS_SECRET']
 
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 
-twitter_API = tweepy.API(auth)
+auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
+api = tweepy.API(auth)
 
 while True:
     twitter_API.update_status('#semluva')
